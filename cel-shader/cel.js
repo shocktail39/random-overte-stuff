@@ -17,11 +17,13 @@ limitations under the License.
 */
 
 (function() {
- // these constants should be changed to point to the URL of cel.fs and your albedo and emissive maps.
+ // the first three constants should be changed to point to the URL of cel.fs and your albedo and emissive maps.
  // SHADER_URL should work as is if you keep this script and the shader in the same folder.
+ // MATERIAL_NAME should be "[mat::" followed by the name of your avatar's material followed by a closing "]"
  const ALBEDO_URL = "https://example.com/albedo.png";
  const EMISSIVE_URL = "https://example.com/emissive.png";
  const SHADER_URL = Script.resolvePath("cel.fs");
+ const MATERIAL_NAME = "[mat::body]";
 
  const shader = {materials:{
   model:"hifi_shader_simple",
@@ -35,7 +37,7 @@ limitations under the License.
  const materialID = Entities.addEntity({
   type:"Material",
   parentID:MyAvatar.sessionUUID,
-  parentMaterialName:"[mat::atlas]",
+  parentMaterialName:MATERIAL_NAME,
   materialURL:"materialData",
   priority:1,
   materialData:JSON.stringify(shader)
