@@ -17,7 +17,7 @@ limitations under the License.
 */
 
 (function() {
- // these constants should be changed to point to the URL of shader.fs and your albedo and emissive maps.
+ // these constants should be changed to point to the URL of cel.fs and your albedo and emissive maps.
  // SHADER_URL should work as is if you keep this script and the shader in the same folder.
  const ALBEDO_URL = "https://example.com/albedo.png";
  const EMISSIVE_URL = "https://example.com/emissive.png";
