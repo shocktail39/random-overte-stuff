@@ -20,10 +20,11 @@ limitations under the License.
  // the first three constants should be changed to point to the URL of cel.fs and your albedo and emissive maps.
  // SHADER_URL should work as is if you keep this script and the shader in the same folder.
  // MATERIAL_NAME should be "[mat::" followed by the name of your avatar's material followed by a closing "]"
+ // if your avatar has multiple materials, put them all in the same set of brackets, and separate them by commas without spaces between, with "mat::" before each one.
  const ALBEDO_URL = "https://example.com/albedo.png";
  const EMISSIVE_URL = "https://example.com/emissive.png";
  const SHADER_URL = Script.resolvePath("cel.fs");
- const MATERIAL_NAME = "[mat::body]";
+ const MATERIAL_NAME = "[mat::body,mat::shirt,mat::pants]";
 
  const shader = {materials:{
   model:"hifi_shader_simple",
