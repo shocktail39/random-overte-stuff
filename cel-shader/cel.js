@@ -26,6 +26,25 @@ limitations under the License.
  const SHADER_URL = Script.resolvePath("cel.fs");
  const MATERIAL_NAME = "[mat::body,mat::shirt,mat::pants]";
 
+ {
+  // remove old shader material manually if it didn't properly get removed last
+  // time the script ended, such as on a crash
+  const wearables = Entities.getChildrenIDs(MyAvatar.sessionUUID);
+  var i = 0;
+  while (i < wearables.length) {
+   const wearableID = wearables[i];
+   if (Entities.getEntityType(wearableID) === "Material") {
+    const properties = Entities.getEntityProperties(wearableID);
+    if (Object.hasOwn(properties, "materialData")) {
+     const materialData = JSON.parse(properties.materialData);
+     if (Object.hasOwn(materialData.materials, "procedural") && materialData.materials.procedural.shaderUrl === SHADER_URL) {
+      Entities.deleteEntity(wearableID);
+     } else i++;
+    } else i++;
+   } else i++;
+  }
+ }
+
  const shader = {materials:{
   model:"hifi_shader_simple",
   procedural:{
