@@ -30,8 +30,7 @@ limitations under the License.
   // remove old shader material manually if it didn't properly get removed last
   // time the script ended, such as on a crash
   const wearables = Entities.getChildrenIDs(MyAvatar.sessionUUID);
-  var i = 0;
-  while (i < wearables.length) {
+  for (var i = 0; i < wearables.length; i++) {
    const wearableID = wearables[i];
    if (Entities.getEntityType(wearableID) === "Material") {
     const properties = Entities.getEntityProperties(wearableID);
@@ -39,9 +38,9 @@ limitations under the License.
      const materialData = JSON.parse(properties.materialData);
      if (Object.hasOwn(materialData.materials, "procedural") && materialData.materials.procedural.shaderUrl === SHADER_URL) {
       Entities.deleteEntity(wearableID);
-     } else i++;
-    } else i++;
-   } else i++;
+     }
+    }
+   }
   }
  }
 
